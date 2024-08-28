@@ -2,5 +2,8 @@ require_relative 'lib/hash_map'
 
 hash_map = HashMap.new
 
-puts hash_map.hash('Carlos')
-puts hash_map.hash('Carla')
+hash_map.set('apple', 'red')
+hash_map.set('banana', 'yellow')
+hash_map.set('apple', 'green')
+
+puts hash_map.entries

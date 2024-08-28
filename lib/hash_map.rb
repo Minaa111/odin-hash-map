@@ -22,7 +22,7 @@ class HashMap
 
     current_node = @buckets[index]
 
-    new_node = Node(key, value)
+    new_node = Node.new(key, value)
 
     if current_node.nil?
       @buckets[index] = new_node
@@ -41,5 +41,15 @@ class HashMap
         current_node = current_node.next_node
       end
     end
+  end
+
+  def entries
+    entry_strings = []
+
+    @buckets.each do |entry|
+      entry_strings << "[#{entry.key}, #{entry.value}]" unless entry.nil?
+    end
+
+    "[#{entry_strings.join(', ')}]"
   end
 end
