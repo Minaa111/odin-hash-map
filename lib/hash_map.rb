@@ -56,6 +56,19 @@ class HashMap
     nil
   end
 
+  def has?(key)
+    index = hash(key) % @size
+    current_node = @buckets[index]
+
+    while current_node
+      return true if current_node.key == key
+
+      current_node = current_node.next_node
+    end
+
+    false
+  end
+
   def entries
     entry_strings = []
 
