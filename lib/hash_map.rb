@@ -105,6 +105,21 @@ class HashMap
     @number_of_keys = 0
   end
 
+  def keys
+    keys = []
+
+    @buckets.each do |bucket|
+      current_node = bucket
+
+      while current_node
+        keys << current_node.key
+        current_node = current_node.next_node
+      end
+    end
+
+    keys
+  end
+
   def entries
     entry_strings = []
 
