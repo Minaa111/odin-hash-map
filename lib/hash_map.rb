@@ -100,6 +100,11 @@ class HashMap
     @number_of_keys
   end
 
+  def clear
+    @buckets = Array.new(size)
+    @number_of_keys = 0
+  end
+
   def entries
     entry_strings = []
 

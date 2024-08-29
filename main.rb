@@ -12,3 +12,7 @@ puts hash_map.length
 hash_map.remove('orange')
 
 puts hash_map.length
+
+hash_map.clear
+puts hash_map.entries
+puts hash_map.length
