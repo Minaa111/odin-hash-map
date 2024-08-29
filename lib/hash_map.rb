@@ -22,6 +22,7 @@ class HashMap
     resize if @number_of_keys >= @size * 0.75
 
     index = hash(key) % @size
+    raise IndexError if index.negative? || index >= @buckets.length
 
     current_node = @buckets[index]
 
@@ -65,6 +66,8 @@ class HashMap
 
   def get(key)
     index = hash(key) % @size
+    raise IndexError if index.negative? || index >= @buckets.length
+
     current_node = @buckets[index]
 
     while current_node
@@ -78,6 +81,8 @@ class HashMap
 
   def has?(key)
     index = hash(key) % @size
+    raise IndexError if index.negative? || index >= @buckets.length
+
     current_node = @buckets[index]
 
     while current_node
@@ -91,6 +96,8 @@ class HashMap
 
   def remove(key)
     index = hash(key) % @size
+    raise IndexError if index.negative? || index >= @buckets.length
+
     current_node = @buckets[index]
     previous_node = nil
 
