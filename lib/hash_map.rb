@@ -19,6 +19,8 @@ class HashMap
   end
 
   def set(key, value)
+    resize if @number_of_keys >= @size * 0.75
+
     index = hash(key) % @size
 
     current_node = @buckets[index]
@@ -41,6 +43,21 @@ class HashMap
           return
         end
 
+        current_node = current_node.next_node
+      end
+    end
+  end
+
+  def resize
+    old_buckets = @buckets
+    @size *= 2
+    @buckets = Array.new(@size)
+    @number_of_keys = 0
+
+    old_buckets.each do |bucket|
+      current_node = bucket
+      while current_node
+        set(current_node.key, current_node.value)
         current_node = current_node.next_node
       end
     end
