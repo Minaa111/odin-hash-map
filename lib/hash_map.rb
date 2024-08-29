@@ -1,11 +1,12 @@
 require_relative 'node'
 
 class HashMap
-  attr_accessor :buckets, :size
+  attr_accessor :buckets, :size, :number_of_keys
 
   def initialize(size = 16)
     @size = size
     @buckets = Array.new(size)
+    @number_of_keys = 0
   end
 
   def hash(key)
@@ -26,6 +27,7 @@ class HashMap
 
     if current_node.nil?
       @buckets[index] = new_node
+      @number_of_keys += 1
     else
       while current_node
         if current_node.key == key
@@ -35,6 +37,7 @@ class HashMap
 
         if current_node.next_node.nil?
           current_node.next_node = new_node
+          @number_of_keys += 1
           return
         end
 
@@ -82,6 +85,7 @@ class HashMap
           previous_node.next_node = current_node.next_node
         end
 
+        @number_of_keys -= 1
         return current_node.value
       end
 
@@ -90,6 +94,10 @@ class HashMap
     end
 
     nil
+  end
+
+  def length
+    @number_of_keys
   end
 
   def entries
