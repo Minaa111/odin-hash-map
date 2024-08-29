@@ -120,6 +120,21 @@ class HashMap
     keys
   end
 
+  def values
+    values = []
+
+    @buckets.each do |bucket|
+      current_node = bucket
+
+      while current_node
+        values << current_node.value
+        current_node = current_node.next_node
+      end
+    end
+
+    values
+  end
+
   def entries
     entry_strings = []
 

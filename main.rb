@@ -7,4 +7,4 @@ hash_map.set('banana', 'yellow')
 hash_map.set('apple', 'green')
 hash_map.set('orange', 'orange')
 
-puts hash_map.keys
+puts hash_map.values
