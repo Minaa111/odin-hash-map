@@ -69,6 +69,29 @@ class HashMap
     false
   end
 
+  def remove(key)
+    index = hash(key) % @size
+    current_node = @buckets[index]
+    previous_node = nil
+
+    while current_node
+      if current_node.key == key
+        if previous_node.nil?
+          @buckets[index] = current_node.next_node
+        else
+          previous_node.next_node = current_node.next_node
+        end
+
+        return current_node.value
+      end
+
+      previous_node = current_node
+      current_node = current_node.next_node
+    end
+
+    nil
+  end
+
   def entries
     entry_strings = []
 

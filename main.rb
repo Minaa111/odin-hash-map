@@ -8,5 +8,6 @@ hash_map.set('apple', 'green')
 
 puts hash_map.entries
 
-puts hash_map.has?('apple')
-puts hash_map.has?('orange')
+puts hash_map.remove('')
+
+puts hash_map.entries
